@@ -1,0 +1,36 @@
+<!-- DataTales Example -->
+<div class="card shadow mb-4">
+  <div class="card-header py-3">
+    <%- include("./add.modal-button.ejs") %>
+  </div>
+  <div class="card-body">
+    <div class="table-responsive">
+      <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+        <thead>
+          <tr>
+            <th>No.</th>
+            <th>Name</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% categories.forEach((category, i) => { %>
+          <tr>
+            <td><%= i + 1 %></td>
+            <td><%= category.name %></td>
+            <td>
+              <%- include("./edit.modal-button.ejs", {category}) %>
+              <form method="post" action="/admin/categories/<%= category.id %>?_method=DELETE" class="d-inline">
+                <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+                <button type="submit" type="button" class="btn btn-danger btn-circle btn-sm">
+                  <i class="fas fa-trash"></i>
+                </button>
+              </form>
+            </td>
+          </tr>
+          <% }) %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

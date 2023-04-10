@@ -1,0 +1,18 @@
+{
+  "folders": [
+    {
+      "name": "/",
+      "path": "."
+    },
+    {
+      "path": "client"
+    },
+    {
+      "path": "cms"
+    }
+  ],
+  "settings": {
+    "eslint.workingDirectories": ["client", "cms"],
+    "conventionalCommits.scopes": ["client", "cms"]
+  }
+}

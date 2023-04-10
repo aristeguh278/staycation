@@ -1,0 +1,16 @@
+FROM node:18-alpine
+
+WORKDIR /app
+
+COPY package.json .
+COPY package-lock.json .
+RUN npm i --omit=dev
+
+COPY bin/seed.ts bin/
+COPY seeds/index.ts seeds/
+COPY seeds/images public/images/
+COPY models models/
+COPY utils utils/
+COPY tsconfig.json .
+
+CMD [ "npm", "run", "seed" ]

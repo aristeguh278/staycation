@@ -1,0 +1,72 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    font-family: "Poppins", sans-serif;
+  }
+}
+
+@layer utilities {
+  .app-container {
+    @apply container mx-auto px-4 lg:px-36;
+  }
+
+  .text-light {
+    @apply font-light text-base-300;
+  }
+
+  .text-semibold {
+    @apply font-medium text-secondary leading-7;
+  }
+
+  // For element with selector: figure > img
+  .img-wrapper {
+    @apply h-full w-full;
+
+    img {
+      @apply card h-full w-full object-cover;
+    }
+  }
+}
+
+@layer components {
+  .app-btn {
+    @apply btn normal-case;
+  }
+
+  .app-btn-primary {
+    box-shadow: 0px 8px 15px rgba(50, 82, 223, 0.3);
+    @apply btn-primary rounded font-medium leading-7
+    min-h-[3.125rem] min-w-[13rem] text-lg px-7;
+  }
+
+  .app-btn-light {
+    @apply rounded leading-7 min-h-[3.125rem] min-w-[13rem] 
+    text-lg text-base-300 px-7 bg-base-200 border-none font-normal;
+  }
+
+  .app-btn-link {
+    @apply btn-link;
+  }
+
+  .disabled {
+    box-shadow: none;
+    @apply btn-disabled;
+  }
+}
+
+@layer components {
+  .app-link {
+    @apply link link-hover;
+  }
+
+  // To make parent block clickable
+  .stretched-link::after {
+    content: "";
+    @apply z-10 absolute inset-0 bg-transparent pointer-events-auto;
+  }
+}

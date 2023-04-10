@@ -1,0 +1,44 @@
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-warning btn-circle btn-sm" data-toggle="modal"
+  data-target="#editModal<%= feature.id %>">
+  <i class="fas fa-edit"></i>
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="editModal<%= feature.id %>" data-backdrop="static" data-keyboard="false" tabindex="-1"
+  aria-labelledby="editModalLabel<%= feature.id %>" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="editModalLabel<%= feature.id %>">Edit Feature</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <form method="post"
+        action="/admin/properties/<%= property.id %>/features/<%= feature.id %>?_method=PATCH&_csrf=<%= csrfToken %>"
+        enctype="multipart/form-data">
+        <div class="modal-body">
+          <div class="form-group">
+            <label for="name">Name</label>
+            <input type="text" class="form-control" id="name" name="name" placeholder="Enter name" required
+              value="<%= feature.name %>">
+          </div>
+          <div class="form-group">
+            <label for="quantity">Quantity</label>
+            <input type="number" class="form-control" id="quantity" name="quantity" placeholder="Enter quantity"
+              required min="0" value="<%= feature.quantity %>">
+          </div>
+          <div class="form-group">
+            <label for="icon">Icon</label>
+            <input type="file" class="form-control-file" id="icon" name="icon">
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-light" data-dismiss="modal">Close</button>
+          <button type="submit" class="btn btn-primary">Edit</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
